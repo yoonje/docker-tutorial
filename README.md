@@ -11,7 +11,7 @@
 # Tutorial 1 - 이미지 사용하기
 #### 이미지 다운로드
 ```bash
-[irteamsu@ip-xxx-xxx-xxx-xxx ~]$ docker pull nginx
+[ec2-user@@ip-xxx-xxx-xxx-xxx ~]$ docker pull nginx
 Using default tag: latest
 latest: Pulling from library/nginx
 66dbba0fb1b5: Pull complete
@@ -25,7 +25,7 @@ Status: Downloaded newer image for nginx:latest
 docker.io/library/nginx:latest
 ```
 ```bash
-[irteamsu@ip-xxx-xxx-xxx-xxx ~]$ docker pull redis
+[ec2-user@@ip-xxx-xxx-xxx-xxx ~]$ docker pull redis
 Using default tag: latest
 latest: Pulling from library/redis
 66dbba0fb1b5: Already exists
@@ -39,7 +39,7 @@ Status: Downloaded newer image for redis:latest
 docker.io/library/redis:latest
 ```
 ```bash
-[irteamsu@ip-xxx-xxx-xxx-xxx ~]$ docker pull ubuntu
+[ec2-user@@ip-xxx-xxx-xxx-xxx ~]$ docker pull ubuntu
 Using default tag: latest
 latest: Pulling from library/ubuntu
 d0a4bfa485d1: Pull complete
@@ -48,7 +48,7 @@ Status: Downloaded newer image for ubuntu:latest
 docker.io/library/ubuntu:latest
 ```
 ```bash
-[irteamsu@ip-xxx-xxx-xxx-xxx ~]$ docker pull ubuntu:20.04
+[ec2-user@@ip-xxx-xxx-xxx-xxx ~]$ docker pull ubuntu:20.04
 20.04: Pulling from library/ubuntu
 698acb83f45f: Already exists
 Digest: sha256:9fa30fcef427e5e88c76bc41ad37b7cc573e1d79cecb23035e413c4be6e476ab
@@ -58,7 +58,7 @@ docker.io/library/ubuntu:20.04
 
 #### 이미지 목록 확인하기
 ```bash
-[irteamsu@ip-xxx-xxx-xxx-xxx ~]$ docker images
+[ec2-user@ip-xxx-xxx-xxx-xxx ~]$ docker images
 REPOSITORY   TAG       IMAGE ID       CREATED      SIZE
 redis        latest    edf4b3932692   7 days ago   111MB
 ubuntu       20.04     7ace790b8bce   8 days ago   65.7MB
@@ -68,7 +68,7 @@ ubuntu       latest    730eeb702b69   8 days ago   69.2MB
 
 #### 이미지 삭제하기
 ```bash
-[irteamsu@ip-xxx-xxx-xxx-xxx ~]$ docker rmi ubuntu:latest
+[ec2-user@ip-xxx-xxx-xxx-xxx ~]$ docker rmi ubuntu:latest
 Untagged: ubuntu:latest
 Untagged: ubuntu@sha256:2adf22367284330af9f832ffefb717c78239f6251d9d0f58de50b86229ed1427
 Deleted: sha256:730eeb702b69e53ae1c79541a48af6303d1bd240014dc6b4208ee4f3fab7b681
@@ -80,14 +80,14 @@ Deleted: sha256:90d6d7c9f66575093f7958c215f0b1e138c339c8e77406ca75c621117677d147
 
 #### 컨테이너 실행하기
 ```bash
-[irteamsu@ip-xxx-xxx-xxx-xxx ~]$ docker run ubuntu:20.04
+[ec2-user@ip-xxx-xxx-xxx-xxx ~]$ docker run ubuntu:20.04
 ```
 ```bash
-[irteamsu@ip-xxx-xxx-xxx-xxx ~]$ docker run -d -p 1234:6379 redis
+[ec2-user@ip-xxx-xxx-xxx-xxx ~]$ docker run -d -p 1234:6379 redis
 3758bb5c3c6214b0b5d0bc94c5ddca5284ceebe3f2c896a543ddd7f9ee2bb1cc
 ```
 ```bash
-[irteamsu@ip-xxx-xxx-xxx-xxx ~]$ docker run nginx
+[ec2-user@ip-xxx-xxx-xxx-xxx ~]$ docker run nginx
 /docker-entrypoint.sh: /docker-entrypoint.d/ is not empty, will attempt to perform configuration
 /docker-entrypoint.sh: Looking for shell scripts in /docker-entrypoint.d/
 /docker-entrypoint.sh: Launching /docker-entrypoint.d/10-listen-on-ipv6-by-default.sh
@@ -109,9 +109,9 @@ Deleted: sha256:90d6d7c9f66575093f7958c215f0b1e138c339c8e77406ca75c621117677d147
 2023/03/09 11:22:01 [notice] 1#1: start worker process 33
 ```
 ```bash
-[irteamsu@ip-xxx-xxx-xxx-xxx ~]$ docker run --name webserver -d -p 8080:80 nginx
+[ec2-user@ip-xxx-xxx-xxx-xxx ~]$ docker run --name webserver -d -p 8080:80 nginx
 0c62dffab5402cc17d89658078253f69498aee20d414ba3427166dd6ced06de2
-[irteamsu@ip-xxx-xxx-xxx-xxx ~]$ curl localhost:8080
+[ec2-user@ip-xxx-xxx-xxx-xxx ~]$ curl localhost:8080
 <!DOCTYPE html>
 <html>
 <head>
@@ -139,7 +139,7 @@ Commercial support is available at
 
 #### 컨테이너 목록 확인하기
 ```bash
-[irteamsu@ip-xxx-xxx-xxx-xxx ~]$ docker ps
+[ec2-user@ip-xxx-xxx-xxx-xxx ~]$ docker ps
 CONTAINER ID   IMAGE          COMMAND                  CREATED          STATUS          PORTS                    NAMES
 0c62dffab540   nginx          "/docker-entrypoint.…"   47 seconds ago   Up 47 seconds   0.0.0.0:8080->80/tcp     webserver
 3758bb5c3c62   redis          "docker-entrypoint.s…"   4 minutes ago    Up 4 minutes    0.0.0.0:1234->6379/tcp   blissful_driscoll
@@ -148,33 +148,33 @@ CONTAINER ID   IMAGE          COMMAND                  CREATED          STATUS  
 
 #### 컨테이너 중지하기
 ```bash
-[irteamsu@ip-xxx-xxx-xxx-xxx ~]$ docker stop 3758bb5c3c62
+[ec2-user@ip-xxx-xxx-xxx-xxx ~]$ docker stop 3758bb5c3c62
 3758bb5c3c62
 ```
 ```bash
-[irteamsu@ip-xxx-xxx-xxx-xxx ~]$ docker stop 0cc9779b708a
+[ec2-user@ip-xxx-xxx-xxx-xxx ~]$ docker stop 0cc9779b708a
 0cc9779b708a
 ```
 ```bash
-[irteamsu@ip-xxx-xxx-xxx-xxx ~]$ docker stop webserver
+[ec2-user@ip-xxx-xxx-xxx-xxx ~]$ docker stop webserver
 webserver
 ```
 
 #### 컨테이너 재시작하기
 ```bash
-[irteamsu@ip-xxx-xxx-xxx-xxx ~]$ docker restart webserver
+[ec2-user@ip-xxx-xxx-xxx-xxx ~]$ docker restart webserver
 webserver
 ```
 
 #### 컨테이너 제거하기
 ```bash
-[irteamsu@ip-xxx-xxx-xxx-xxx ~]$ docker rm 3758bb5c3c62
+[ec2-user@ip-xxx-xxx-xxx-xxx ~]$ docker rm 3758bb5c3c62
 3758bb5c3c62
 ```
 
 #### 컨테이너 로그 확인하기
 ```bash
-[irteamsu@ip-xxx-xxx-xxx-xxx ~]$ docker logs webserver
+[ec2-user@ip-xxx-xxx-xxx-xxx ~]$ docker logs webserver
 /docker-entrypoint.sh: /docker-entrypoint.d/ is not empty, will attempt to perform configuration
 /docker-entrypoint.sh: Looking for shell scripts in /docker-entrypoint.d/
 /docker-entrypoint.sh: Launching /docker-entrypoint.d/10-listen-on-ipv6-by-default.sh
@@ -249,15 +249,15 @@ webserver
 
 #### 컨테이너 쉘로 접속하기
 ```bash
-[irteamsu@ip-xxx-xxx-xxx-xxx ~]$ docker exec -it webserver /bin/bash
+[ec2-user@ip-xxx-xxx-xxx-xxx ~]$ docker exec -it webserver /bin/bash
 ```
 
 # Tutorial 3 이미지 생성하기
 
 ### spring-petclinic 다운로드
 ```bash
-[irteamsu@ip-xxx-xxx-xxx-xxx ~]$ git clone https://github.com/spring-projects/spring-petclinic
-[irteamsu@ip-xxx-xxx-xxx-xxx ~]$ cd spring-petclinic
+[ec2-user@ip-xxx-xxx-xxx-xxx ~]$ git clone https://github.com/spring-projects/spring-petclinic
+[ec2-user@ip-xxx-xxx-xxx-xxx ~]$ cd spring-petclinic
 ```
 
 #### Dockerfile 생성
@@ -278,12 +278,12 @@ CMD ["./mvnw", "spring-boot:run"]
 
 #### 이미지 빌드하기
 ```bash
-[irteamsu@ip-xxx-xxx-xxx-xxx ~]$ docker build -t spring-petclinic:0.0.1 .
+[ec2-user@ip-xxx-xxx-xxx-xxx ~]$ docker build -t spring-petclinic:0.0.1 .
 ```
 
 #### 이미지 확인하기
 ```bash
-[irteamsu@ip-xxx-xxx-xxx-xxx ~]$ docker images
+[ec2-user@ip-xxx-xxx-xxx-xxx ~]$ docker images
 REPOSITORY         TAG       IMAGE ID       CREATED          SIZE
 spring-petclinic   0.0.1     451aadfba421   22 seconds ago   553MB
 redis              latest    edf4b3932692   7 days ago       111MB
@@ -293,7 +293,7 @@ nginx              latest    114aa6a9f203   8 days ago       135MB
 
 #### 이미지 실행하기
 ```bash
-[irteamsu@ip-xxx-xxx-xxx-xxx ~]$ docker run -p 1234:8080 spring-petclinic:0.0.1
+[ec2-user@ip-xxx-xxx-xxx-xxx ~]$ docker run -p 1234:8080 spring-petclinic:0.0.1
 ```
 <img width="1414" alt="스크린샷 2023-03-09 오후 9 04 36" src="https://user-images.githubusercontent.com/38535571/224021576-0d989cfa-50a2-48f0-b5cb-11c9d7bd2cf8.png">
 
@@ -302,17 +302,17 @@ nginx              latest    114aa6a9f203   8 days ago       135MB
 
 #### 로그인
 ```bash
-[irteamsu@ip-xxx-xxx-xxx-xxx ~]$ docker login
+[ec2-user@ip-xxx-xxx-xxx-xxx ~]$ docker login
 ```
 
 #### 이미지 태그 변경
 ```bash
-[irteamsu@ip-xxx-xxx-xxx-xxx ~]$ docker image tag spring-petclinic:0.0.1 [DockerHub]/spring-petclinic:0.0.1
+[ec2-user@ip-xxx-xxx-xxx-xxx ~]$ docker image tag spring-petclinic:0.0.1 [DockerHub]/spring-petclinic:0.0.1
 ```
 
 #### 이미지 업로드하기
 
 ```bash
-[irteamsu@ip-xxx-xxx-xxx-xxx ~]$ docker push [DockerHub]/spring-petclinic:0.0.1
+[ec2-user@ip-xxx-xxx-xxx-xxx ~]$ docker push [DockerHub]/spring-petclinic:0.0.1
 ```
 <img width="1281" alt="스크린샷 2023-03-09 오후 9 16 28" src="https://user-images.githubusercontent.com/38535571/224021588-4307d2db-6f4e-4677-a0ff-afb9ab8820b9.png">

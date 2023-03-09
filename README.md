@@ -1,4 +1,5 @@
 # Docker Tutorial
+도커 튜토리얼
 
 # Tutorial 준비
 - Docker Desktop이 설치된 PC
@@ -297,9 +298,9 @@ nginx              latest    114aa6a9f203   8 days ago       135MB
 <img width="1414" alt="스크린샷 2023-03-09 오후 9 04 36" src="https://user-images.githubusercontent.com/38535571/224021576-0d989cfa-50a2-48f0-b5cb-11c9d7bd2cf8.png">
 
 
-# Tutorial 4 이미지 배포하기 (DockerHub 계정 생성 및 연동 필요)
+# Tutorial 4 이미지 배포하기 (DockerHub 계정 및 연동 필요)
 
-#### 도커 로그인
+#### 로그인
 ```bash
 [irteamsu@ip-xxx-xxx-xxx-xxx ~]$ docker login
 ```
@@ -309,7 +310,7 @@ nginx              latest    114aa6a9f203   8 days ago       135MB
 [irteamsu@ip-xxx-xxx-xxx-xxx ~]$ docker image tag spring-petclinic:0.0.1 [DockerHub]/spring-petclinic:0.0.1
 ```
 
-#### 이미지 업로드하기 
+#### 이미지 업로드하기
 
 ```bash
 [irteamsu@ip-xxx-xxx-xxx-xxx ~]$ docker push [DockerHub]/spring-petclinic:0.0.1
